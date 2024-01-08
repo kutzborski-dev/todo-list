@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 // Page wrapper
-
+import { Page } from 'components/index';
 
 // Pages
 import {
@@ -22,7 +22,7 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <TodoPage />
+    element: <Page><TodoPage /></Page>
   }
 ]);
 

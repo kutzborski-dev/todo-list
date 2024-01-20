@@ -1,6 +1,6 @@
-function TodoItem() {
+function TodoItem({todo}: {todo: any}) {
     return (
-        <p>Todo item</p>
+        <li>{todo.label}</li>
     )
 }
 

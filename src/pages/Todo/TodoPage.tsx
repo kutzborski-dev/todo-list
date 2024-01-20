@@ -1,6 +1,20 @@
+import TodoList from "./components/TodoList";
+
 function TodoPage() {
+    const todoDummyData = [{
+        label: "Test",
+        status: "complete"
+    }, {
+        label: "Test again",
+        status: "ongoing"
+    }, {
+        label: "Last test",
+        status: "onhold"
+    }];
     return (
-        <p>Todo page</p>
+        <main>
+            <TodoList todos={todoDummyData} />
+        </main>
     )
 }
 

@@ -1,6 +1,14 @@
-function TodoList() {
+import TodoItem from "./TodoItem";
+
+function TodoList({todos}: {todos: Array<object>}) {
     return (
-        <p>Todo list</p>
+        <div id="todo-list-container">
+            <h3>Todo List Name</h3>
+
+            <ul id="todo-list">
+                {todos.map(todo => <TodoItem todo={todo} />)}
+            </ul>
+        </div>
     )
 }
 

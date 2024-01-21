@@ -5,7 +5,7 @@ function Page({children}: {children: ReactElement}) {
     return (
         <div id="page-wrapper">
             <Header />
-            <div id="page-container" className="max-w-5xl mx-auto my-12 rounded-2xl bg-white shadow-md shadow-slate-800/5 dark:shadow-none dark:bg-foreground-dark/50 p-6 px-8">
+            <div id="page-container" className="max-w-5xl mx-auto my-12 rounded-2xl bg-white shadow-md shadow-slate-800/5 dark:shadow-none dark:bg-foreground-dark/50 p-4 px-8">
                 {children}
             </div>
         </div>

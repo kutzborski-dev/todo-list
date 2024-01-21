@@ -1,8 +1,19 @@
+import { Done as DoneIcon } from "@mui/icons-material";
+
 function TodoItem({todo}: {todo: any}) {
     return (
-        <li>
-            <span className="w-3 h-3 bg-[#ff0000] inline-block mr-2 rounded-full"></span>
-            {todo.label}
+        <li className="flex">
+            <div className="mr-2 w-4 text-center">
+                {
+                    todo.status == 'complete' ?
+                        <DoneIcon fontSize="small" className="text-lime-400" />
+                    :
+                        <span className="mt-2 w-3 h-3 bg-[#ff0000] inline-block rounded-full"></span>
+                }
+            </div>
+            <div className={`leading-7 ${todo.status == 'complete' && 'line-through text-slate-400'}`}>
+                {todo.label}
+            </div>
         </li>
     )
 }

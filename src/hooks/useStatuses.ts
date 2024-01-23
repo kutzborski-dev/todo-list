@@ -9,14 +9,14 @@ type StatusType = {
 }
 
 function useStatuses() {
-    const statusData = Cache.get<StatusType[]>("statuses") ?? [];
+    const statusData: StatusType[] = Cache.get<StatusType[]>("statuses") ?? [];
     const [statuses, setStatuses] = useState<StatusType[]>(statusData);
 
     useEffect(() => {
-        Cache.set<StatusType[]>("statuses", statuses);
+        Cache.set("statuses", statuses);
     }, [statuses]);
 
-    return [statuses, setStatuses];
+    return [statuses, setStatuses] as const;
 }
 
 export default useStatuses;

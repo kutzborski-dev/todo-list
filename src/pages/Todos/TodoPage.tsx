@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 function TodoPage() {
     const { id: listId } = useParams();
 
-    if(!listId) return <h3 className="text-2xl leading-6">"Todo list not found"</h3>;
+    if(!listId) return <h3 className="text-2xl leading-6 text-center">"Todo list not found"</h3>;
     
     const todoDummyData = [{
         label: "Test",

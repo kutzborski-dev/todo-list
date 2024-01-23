@@ -33,14 +33,14 @@ function TodoPage() {
                         <h1 id="todo-list-name" className="text-2xl leading-6">Todo List Name</h1>
                     </div>
                     <div>
-                        <Button>
-                            <EditNoteIcon fontSize="small" className="text-slate-600 mr-1" />
-                            <label className="text-slate-700 cursor-pointer">Edit</label>
+                        <Button className="!text-slate-700 dark:!text-slate-300 hover:!bg-primary-hover/[.04] hover:!text-primary-hover dark:hover:!bg-primary-dark-hover/15">
+                            <EditNoteIcon fontSize="small" className="mr-1" />
+                            <label className="cursor-pointer">Edit</label>
                         </Button>
 
-                        <Button>
-                            <SettingsIcon fontSize="small" className="text-slate-600 mr-1" />
-                            <label className="text-slate-700 cursor-pointer">Settings</label>
+                        <Button className="!text-slate-700 dark:!text-slate-300 hover:!bg-primary-hover/[.04] hover:!text-primary-hover dark:hover:!bg-primary-dark-hover/15">
+                            <SettingsIcon fontSize="small" className="mr-1" />
+                            <label className="cursor-pointer">Settings</label>
                         </Button>
                     </div>
                 </div>

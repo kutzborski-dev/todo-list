@@ -14,7 +14,7 @@ function BackButton() {
     return (
         <Button
             onClick={() => navigate(-1)}
-            className="!text-primary dark:!text-primary-dark hover:!bg-primary-hover/10 dark:hover:!bg-primary-dark-hover/10 !mb-2"
+            className="!text-primary dark:!text-primary-dark hover:!bg-primary-hover/[.06] dark:hover:!bg-primary-dark-hover/10 !mb-2"
         >
             <KeyboardBackspaceIcon fontSize="small" className="mr-2" /> Back
         </Button>

@@ -12,6 +12,12 @@ module.exports = {
         'foreground': {
           DEFAULT: colors.white,
           dark: colors.slate[700],
+        },
+        primary: {
+          DEFAULT: colors.sky[600],
+          hover: colors.sky[500],
+          dark: colors.violet[500],
+          'dark-hover': colors.violet[600]
         }
       }
     },

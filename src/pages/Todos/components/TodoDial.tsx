@@ -18,7 +18,7 @@ export default function TodoDial({ariaLabel = "", positionStyle = null, icon = n
             sx={positionStyle}
             icon={icon}
             FabProps={{
-                className: "!bg-sky-600 hover:!bg-sky-500 dark:!bg-violet-500 dark:hover:!bg-violet-600",
+                className: "!bg-primary hover:!bg-primary-hover dark:!bg-primary-dark dark:hover:!bg-primary-dark-hover",
             }}
         >
         </SpeedDial>

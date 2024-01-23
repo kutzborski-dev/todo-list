@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider
 } from 'react-router-dom';
+import ThemeContextProvider from 'context/themeContext';
 
 // Page wrapper
 import { Page } from 'components/index';
@@ -38,7 +39,9 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeContextProvider>
+      <RouterProvider router={router} />
+    </ThemeContextProvider>
   </React.StrictMode>
 );
 

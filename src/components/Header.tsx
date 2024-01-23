@@ -3,10 +3,10 @@ import {
     LightModeOutlined as LightModeOutlinedIcon,
     LightMode as LightModeIcon
  } from '@mui/icons-material';
-import useTheme from 'hooks/useTheme';
+import { useThemeContext } from 'context/themeContext';
 
 function Header() {
-    const [theme, setTheme] = useTheme();
+    const { theme, setTheme } = useThemeContext();
 
     return (
         <header className="py-5 px-6 bg-white dark:bg-slate-700/50 shadow-md shadow-slate-800/5 dark:shadow-none relative">

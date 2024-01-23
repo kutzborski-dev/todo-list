@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 import { Header } from "./";
 
-function Page({children}: {children: ReactElement}) {
+function Page({children}: {children: ReactNode}) {
     return (
         <div id="page-wrapper">
             <Header />

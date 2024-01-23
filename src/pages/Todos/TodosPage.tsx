@@ -1,5 +1,7 @@
 import TodoListType from "./types/TodoListType"; 
 import TodoTab from "./components/TodoTab";
+import TodoDial from "./components/TodoDial";
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 function TodosPage() {
     const todoLists: TodoListType[] = [
@@ -28,7 +30,7 @@ function TodosPage() {
             status: "onhold",
             data: [
                 {
-                    label: "Door knob nail",
+                    label: "Door knob",
                     status: "onhold"
                 },
                 {
@@ -63,6 +65,11 @@ function TodosPage() {
                     todoLists.map(list => <li className="mb-2"><TodoTab list={list} /></li>)
                 }
             </ul>
+
+            <TodoDial
+                ariaLabel="Create new todo list"
+                icon={<PlaylistAddIcon fontSize="medium" />}
+            />
         </main>
     )
 }

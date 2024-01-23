@@ -12,7 +12,9 @@ import { Page } from 'components/index';
 
 // Pages
 import {
-  TodoPage
+  TodosPage,
+  TodoPage,
+  SettingsPage
 } from 'pages/index';
 
 const root = ReactDOM.createRoot(
@@ -22,7 +24,15 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Page><TodosPage /></Page>
+  },
+  {
+    path: "/list/:id",
     element: <Page><TodoPage /></Page>
+  },
+  {
+    path: "/settings",
+    element: <Page><SettingsPage /></Page>
   }
 ]);
 

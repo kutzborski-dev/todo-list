@@ -1,4 +1,6 @@
 // File to export all screens from
-import TodoPage from "./Todo/TodoPage";
+import TodosPage from "./Todos/TodosPage";
+import TodoPage from "./Todos/TodoPage";
+import SettingsPage from "./Settings/SettingsPage";
 
-export { TodoPage };
+export { TodosPage, TodoPage, SettingsPage };

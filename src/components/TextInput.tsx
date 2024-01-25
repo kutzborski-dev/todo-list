@@ -6,13 +6,13 @@ export default function TextInput({id = null, label, fontSize = null, name = nul
     const { theme } = useThemeContext();
     id ??= label.replace(/ /g, "").toLowerCase();
     name ??= id;
-    fontSize ??= 'text-lg';
+    fontSize ??= '!text-lg';
 
     return (
         <TextField id={id} name={name} label={label} variant="standard" inputProps={{
-            className: `!text-slate-600 dark:!text-slate-300 !${fontSize}`
+            className: `!text-slate-600 dark:!text-slate-300 ${fontSize}`
         }} InputLabelProps={{
-            className: `!${fontSize}`
+            className: fontSize
         }} sx={{
             '& .MuiInputLabel-formControl': {
                 color: theme === 'dark' ? colors.slate[300] : colors.slate[600]

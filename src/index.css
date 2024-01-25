@@ -9,6 +9,12 @@
     @apply text-slate-600;
     @apply dark:text-slate-300;
   }
+
+  a:not(#app-title) {
+    @apply text-primary-hover;
+    @apply hover:underline;
+    @apply dark:text-primary-dark;
+  }
 }
 
 body {

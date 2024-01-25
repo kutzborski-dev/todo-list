@@ -24,13 +24,16 @@ function TodoPage() {
         label: "Last test",
         status: "onhold"
     }];
+
+    const allDone = () => todoDummyData.filter(task => task.status === 'complete').length === todoDummyData.length;
+
     return (
         <main>
             <div id="todo-list-container" className="mb-4">
                 <div id="todo-list-header" className="flex">
                     <div className="flex flex-1 mt-1 mb-6">
                         <div className="mr-2">
-                            <DoneAllIcon fontSize="medium" className="text-slate-400" />
+                            <DoneAllIcon fontSize="medium" className={allDone() ? "text-lime-500 dark:text-green-400" : "text-slate-400"} />
                         </div>
                         <h1 id="todo-list-name" className="text-2xl leading-6">Todo List Name</h1>
                     </div>

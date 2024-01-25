@@ -10,7 +10,9 @@ function Header() {
 
     return (
         <header className="py-5 px-6 bg-white dark:bg-slate-700/50 shadow-md shadow-slate-800/5 dark:shadow-none relative">
-            <h2 className="text-center uppercase font-bold text-slate-700 dark:text-slate-400 text-lg flex-1"><a href="/">Todo List App</a></h2>
+            <div className="flex justify-center">
+                <a href="/" id="app-title"><img className="w-24 flex-0" src={`/assets/images/todo-logo-${theme}.png`} alt="App logo" /></a>
+            </div>
             <div className="absolute top-0 bottom-0 right-6 my-auto h-6">
                 <button className="mr-6" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
                     {

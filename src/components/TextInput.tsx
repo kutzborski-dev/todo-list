@@ -9,7 +9,7 @@ export default function TextInput({id = null, label, fontSize = null, name = nul
     fontSize ??= '!text-lg';
 
     return (
-        <TextField id={id} name={name} label={label} variant="standard" inputProps={{
+        <TextField id={id} name={name} label={label} variant="standard" autoComplete="off" inputProps={{
             className: `!text-slate-600 dark:!text-slate-300 ${fontSize}`
         }} InputLabelProps={{
             className: fontSize

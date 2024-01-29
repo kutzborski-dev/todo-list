@@ -13,6 +13,7 @@ import { Page } from 'components/index';
 
 // Pages
 import {
+  TodoFormPage,
   TodosPage,
   TodoPage,
   SettingsPage
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/list/:id",
     element: <Page><TodoPage /></Page>
+  },
+  {
+    path: "/list/new",
+    element: <Page><TodoFormPage /></Page>
   },
   {
     path: "/settings",

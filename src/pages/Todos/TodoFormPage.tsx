@@ -1,11 +1,13 @@
-import { Button } from "@mui/material";
+import { Button, FormControl, MenuItem, InputLabel } from "@mui/material";
 import TextInput from "components/TextInput";
 import { RemoveCircleOutline as RemoveCircleOutlineIcon, AddCircleOutline as AddCircleOutlineIcon } from '@mui/icons-material';
 import { useRef, useState } from "react";
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 export default function TodoFormPage() {
     const [tasks, setTasks] = useState<string[]>(['task-0']);
-    const formRef = useRef<HTMLFormElement>(null);
+    const formRef = useRef(null);
 
     return (
         <main>
@@ -18,6 +20,24 @@ export default function TodoFormPage() {
                         {
                             tasks.map((item, i) => (
                                 <div key={item} className="task flex items-center">
+                                    <div className="task-status">
+                                    <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+                                    <InputLabel id="demo-simple-select-filled-label">Status</InputLabel>
+                                    <Select
+                                    labelId="demo-simple-select-filled-label"
+                                    id="demo-simple-select-filled"
+                                    value={null}
+                                    onChange={() => null}
+                                    >
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
+                                    </Select>
+                                    </FormControl>
+                                    </div>
                                     <div className="mb-4 task-input">
                                         <TextInput label="Task" name="todo-list-task[]" />
                                     </div>

@@ -5,7 +5,7 @@ const Cache = CacheHelper;
 type Theme = "light" | "dark";
 
 type ThemeContextProps = {
-    theme: "light" | "dark",
+    theme: Theme,
     setTheme: React.Dispatch<React.SetStateAction<Theme>>
 }
 

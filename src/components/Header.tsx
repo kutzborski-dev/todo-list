@@ -14,7 +14,7 @@ function Header() {
                 <a href="/" id="app-title"><img className="w-24 flex-0" src={`/assets/images/todo-logo-${theme}.png`} alt="App logo" /></a>
             </div>
             <div className="absolute top-0 bottom-0 right-6 my-auto h-6">
-                <button className="mr-6" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+                <button className="mr-6" onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}>
                     {
                         theme === 'dark' ?
                             <LightModeOutlinedIcon fontSize="medium" className="text-slate-700 dark:text-slate-400" />

@@ -7,6 +7,7 @@ import {
   RouterProvider
 } from 'react-router-dom';
 import ThemeContextProvider from 'context/themeContext';
+import {NextUIProvider} from "@nextui-org/react";
 
 // Page wrapper
 import { Page } from 'components/index';
@@ -44,9 +45,11 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <ThemeContextProvider>
-      <RouterProvider router={router} />
-    </ThemeContextProvider>
+    <NextUIProvider>
+      <ThemeContextProvider>
+        <RouterProvider router={router} />
+      </ThemeContextProvider>
+    </NextUIProvider>
   </React.StrictMode>
 );
 

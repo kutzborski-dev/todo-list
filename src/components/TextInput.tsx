@@ -2,7 +2,15 @@ import { TextField } from "@mui/material";
 import { useThemeContext } from "context/themeContext"
 import colors from "tailwindcss/colors"
 
-export default function TextInput({id = null, label, fontSize = null, name = null}: {id?: null | string, label: string, fontSize?: null | string, name?: null | string}) {
+type TextInputProps = {
+    id?: null | string;
+    label: string;
+    fontSize?: null | string;
+    name?: null | string;
+    className?: null | string;
+}
+
+export default function TextInput({id = null, label, fontSize = null, name = null, className = ""}: TextInputProps) {
     const { theme } = useThemeContext();
     id ??= label.replace(/ /g, "").toLowerCase();
     name ??= id;
@@ -10,7 +18,7 @@ export default function TextInput({id = null, label, fontSize = null, name = nul
 
     return (
         <TextField id={id} name={name} label={label} variant="standard" autoComplete="off" inputProps={{
-            className: `!text-slate-600 dark:!text-slate-300 ${fontSize}`
+            className: `!text-slate-600 dark:!text-slate-300 ${fontSize}${className}`
         }} InputLabelProps={{
             className: fontSize
         }} sx={{

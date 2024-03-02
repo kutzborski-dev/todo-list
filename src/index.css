@@ -11,9 +11,8 @@
   }
 
   a:not(#app-title) {
-    @apply text-primary-hover;
+    @apply text-primary;
     @apply hover:underline;
-    @apply dark:text-primary-dark;
   }
 }
 

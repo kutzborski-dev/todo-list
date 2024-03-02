@@ -1,28 +1,31 @@
-import { Button, FormControl, MenuItem, InputLabel } from "@mui/material";
+import { Button } from "@mui/material";
 import TextInput from "components/TextInput";
 import { RemoveCircleOutline as RemoveCircleOutlineIcon, AddCircleOutline as AddCircleOutlineIcon } from '@mui/icons-material';
 import { useRef, useState } from "react";
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { useThemeContext } from "context/themeContext";
+import { Select, SelectItem } from "@nextui-org/react";
 
 function TaskStatusSelect({id}: {id: string}) {
     const labelId = `${id}-label`;
     const [value, setValue] = useState("onhold");
+    const { theme } = useThemeContext();
+    const animals = [{label: 'test', value: 'hi'}];
 
     return (
-        <FormControl variant="filled" sx={{ m: 1, minWidth: 127 }}>
-            <InputLabel id={labelId}>Status</InputLabel>
-            <Select
-                name={`${id}[]`}
-                labelId={labelId}
-                id={id}
-                value={value}
-                onChange={({target}) => setValue(v => v = target.value)}
-            >
-                <MenuItem value="complete">Completed</MenuItem>
-                <MenuItem value="inprogress">In progress</MenuItem>
-                <MenuItem value="onhold">On hold</MenuItem>
-            </Select>
-        </FormControl>
+        <Select 
+            variant={'underlined'}
+            label="Status" 
+            className="max-w-xs"
+            classNames={{
+                popoverContent: 'bg-red-900'
+            }}
+          >
+            {animals.map((animal) => (
+              <SelectItem key={animal.value} value={animal.value}>
+                {animal.label}
+              </SelectItem>
+            ))}
+          </Select>
     )
 }
 
@@ -40,11 +43,11 @@ export default function TodoFormPage() {
                     <div id="tasks">
                         {
                             tasks.map((item, i) => (
-                                <div key={item} className="task flex items-center">
-                                    <div className="task-status">
+                                <div key={item} className="task flex items-center mt-3">
+                                    <div className="task-status min-w-28">
                                         <TaskStatusSelect id={`todo-list-task-status-${i}`} />
                                     </div>
-                                    <div className="mb-4 task-input">
+                                    <div className="task-input self-end">
                                         <TextInput label="Task" name="todo-list-task[]" />
                                     </div>
                                     {
@@ -53,7 +56,7 @@ export default function TodoFormPage() {
                                                 <Button onClick={() => setTasks(t => {
                                                     t = t.filter((task, j) => i !== j);
                                                     return t;
-                                                })} className=" !text-primary dark:!text-primary-dark hover:!bg-primary-hover/[.04] dark:hover:!bg-primary-dark-hover/15">
+                                                })} className=" !text-primary hover:!bg-secondary/[.05] dark:hover:!bg-secondary/10">
                                                     <RemoveCircleOutlineIcon fontSize="small" />
                                                 </Button>
                                             </div>
@@ -64,7 +67,7 @@ export default function TodoFormPage() {
                             ))
                         }
                     </div>
-                    <Button onClick={() => setTasks(t => [...t, 'task-'+ tasks.length])} className="!text-primary dark:!text-primary-dark hover:!bg-primary-hover/[.04] dark:hover:!bg-primary-dark-hover/15 !mb-2">
+                    <Button onClick={() => setTasks(t => [...t, 'task-'+ tasks.length])} className="!text-primary hover:!bg-secondary/[.05] dark:hover:!bg-secondary/12 !mb-2 !mt-4">
                         <AddCircleOutlineIcon fontSize="small" className="mr-1.5" /> Add task
                     </Button>
                 </div>

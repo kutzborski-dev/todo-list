@@ -45,11 +45,13 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <NextUIProvider>
-      <ThemeContextProvider>
-        <RouterProvider router={router} />
-      </ThemeContextProvider>
-    </NextUIProvider>
+    <ThemeContextProvider>
+      <NextUIProvider>
+        <main className="purple">
+            <RouterProvider router={router} />
+        </main>
+      </NextUIProvider>
+    </ThemeContextProvider>
   </React.StrictMode>
 );
 

@@ -14,7 +14,7 @@ function BackButton() {
     return (
         <Button
             onClick={() => navigate(-1)}
-            className="!text-primary dark:!text-primary-dark hover:!bg-primary-hover/[.06] dark:hover:!bg-primary-dark-hover/10 !mb-2"
+            className="!text-primary hover:!bg-secondary/[.06] dark:hover:!bg-secondary/13 !mb-2"
         >
             <KeyboardBackspaceIcon fontSize="small" className="mr-2" /> Back
         </Button>
@@ -27,7 +27,7 @@ function Page({children}: {children: ReactNode}) {
             <Header />
             <div id="page-container" className="max-w-5xl mx-auto mt-10 mb-12">
                 <BackButton />
-                <div id="content-container" className="rounded-2xl bg-white shadow-md shadow-slate-800/5 dark:shadow-none dark:bg-foreground-dark/50 p-4 px-8">
+                <div id="content-container" className="rounded-2xl bg-white shadow-md shadow-slate-800/5 dark:shadow-none dark:bg-foreground/50 p-4 px-8">
                     {children}
                 </div>
             </div>

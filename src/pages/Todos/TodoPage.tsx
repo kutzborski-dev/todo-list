@@ -2,12 +2,9 @@ import TodoList from "./components/TodoList";
 import { useParams } from "react-router-dom";
 import { 
     DoneAll as DoneAllIcon,
-    Settings as SettingsIcon,
     EditNote as EditNoteIcon
 } from '@mui/icons-material';
 import { Button } from "@mui/material";
-import TodoDial from "./components/TodoDial";
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 function TodoPage() {
     const { id: listId } = useParams();
@@ -47,11 +44,6 @@ function TodoPage() {
 
                 <TodoList todos={todoDummyData} />
             </div>
-
-            <TodoDial
-                ariaLabel="Create new todo list item"
-                icon={<PlaylistAddIcon fontSize="medium" />}
-            />
         </main>
     )
 }

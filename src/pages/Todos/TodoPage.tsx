@@ -42,11 +42,6 @@ function TodoPage() {
                             <EditNoteIcon fontSize="small" className="mr-1" />
                             <label className="cursor-pointer">Edit</label>
                         </Button>
-
-                        <Button className="!text-slate-700 dark:!text-slate-300 hover:!bg-secondary/[.05] hover:!text-secondary dark:hover:!text-secondary">
-                            <SettingsIcon fontSize="small" className="mr-1" />
-                            <label className="cursor-pointer">Settings</label>
-                        </Button>
                     </div>
                 </div>
 

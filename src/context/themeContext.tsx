@@ -27,7 +27,7 @@ export default function ThemeContextProvider({children}: ThemeContextProviderPro
     }
 
     useEffect(() => {
-        Cache.set("theme", theme);
+        Cache.set<Theme>("theme", theme);
     }, [theme]);
 
     return (

@@ -66,14 +66,7 @@ export default function TodoFormPage() {
             TodoHelper.createList(listName, data);
         }
 
-        navigate('/', {
-            state: {
-                flash: {
-                    message: `Todo list ${listName} ${(list ? 'updated' : 'created')}`,
-                    status: 'success'
-                }
-            }
-        });
+        navigate('/');
     };
 
     return (

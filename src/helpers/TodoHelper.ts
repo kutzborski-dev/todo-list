@@ -48,6 +48,14 @@ class TodoHelper {
         return true;
     }
 
+    static deleteList(id: number) {
+        let lists: TodoListType[] = this.getLists();
+        lists = lists.filter(list => list.id !== id);
+
+        Cache.set<TodoListType[]>("lists", lists);
+        return true;
+    }
+
     static getLists(): TodoListType[] | [] {
         return Cache.get<TodoListType[]>("lists") ?? [];
     }

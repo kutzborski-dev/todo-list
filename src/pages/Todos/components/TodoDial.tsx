@@ -1,9 +1,11 @@
 import { SpeedDial  } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
+import { useNavigate } from "react-router-dom";
 
-export default function TodoDial({ariaLabel = "", tooltipTitle = "", href = null, positionStyle = null, icon = null}:
+export default function TodoDial({ariaLabel = "", tooltipTitle = "", positionStyle = null, icon = null}:
 {ariaLabel?: string, tooltipTitle?: string, href?: null | string, positionStyle?: object | null, icon?: React.ReactNode}) {
     const defaultPosition = { position: 'absolute', bottom: 30, right: 30 };
+    const navigate = useNavigate();
 
     if(!positionStyle) {
         positionStyle = defaultPosition;
@@ -12,7 +14,7 @@ export default function TodoDial({ariaLabel = "", tooltipTitle = "", href = null
     }
 
     const Dial = () => (
-        <Tooltip title={tooltipTitle.length ? tooltipTitle : ariaLabel}>
+        <Tooltip title={tooltipTitle.length ? tooltipTitle : ariaLabel} onClick={() => navigate('/list/new')}>
                 <SpeedDial
                     ariaLabel={ariaLabel}
                     sx={positionStyle}
@@ -25,16 +27,5 @@ export default function TodoDial({ariaLabel = "", tooltipTitle = "", href = null
         </Tooltip>
     );
 
-    return (
-        <>
-            {
-                href ?
-                    <a href={href} aria-label={ariaLabel}>
-                        <Dial />
-                    </a>
-                :
-                    <Dial />
-            }
-        </>
-    );
+    return <Dial />;
 }

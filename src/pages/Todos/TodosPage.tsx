@@ -1,7 +1,5 @@
 import TodoListType from "./types/TodoListType"; 
 import TodoTab from "./components/TodoTab";
-import TodoDial from "./components/TodoDial";
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import ErrorMessage from "components/ErrorMessage";
 import TodoHelper from "helpers/TodoHelper";
 

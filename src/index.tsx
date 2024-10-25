@@ -34,6 +34,10 @@ const router = createBrowserRouter([
     element: <Page><TodoPage /></Page>
   },
   {
+    path: "/list/:id/edit",
+    element: <Page><TodoFormPage /></Page>
+  },
+  {
     path: "/list/new",
     element: <Page><TodoFormPage /></Page>
   },

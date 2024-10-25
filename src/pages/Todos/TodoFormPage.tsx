@@ -1,15 +1,46 @@
 import Input from "components/Input";
 import { RemoveCircleOutline as RemoveCircleOutlineIcon, AddCircleOutline as AddCircleOutlineIcon } from '@mui/icons-material';
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useRef, useState, useEffect } from "react";
 import { Button } from "@nextui-org/react";
 import TodoTaskStatusSelect from "./components/TodoTaskStatusSelect";
 import TodoHelper from "helpers/TodoHelper";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import ErrorMessage from "components/ErrorMessage";
+import TodoListType from "./types/TodoListType";
+import TodoItemType from "./types/TodoItemType";
 
 export default function TodoFormPage() {
-    const [tasks, setTasks] = useState<string[]>(['task-0']);
+    const { id: listId } = useParams();
+
+    const [list, setList] = useState<TodoListType>();
+    const [tasks, setTasks] = useState<string[]>([]);
     const formRef = useRef<HTMLFormElement>(null);
     const navigate = useNavigate();
+  
+    if(listId && !Number(listId)) return <ErrorMessage message={'Invalid todo list ID'} />
+
+    if(listId) {
+        const todoList: TodoListType|null = TodoHelper.getList(Number(listId));
+        if(!todoList) return <ErrorMessage message={'Todo list not found'} />
+
+        if(!list) {
+            setList(todoList);
+        }
+
+        if(!tasks.length) {
+            const todoTaskLabels: string[] = [];
+    
+            for(const task of todoList.data) {
+                todoTaskLabels.push(task.label);
+            }
+    
+            setTasks(todoTaskLabels);
+        }
+    } else {
+        if(!tasks.length) {
+            setTasks(['task-0']);
+        }
+    }
 
     const handleAddTask = () => setTasks(t => [...t, 'task-'+ tasks.length]);
     const handleRemoveTask = (i: number) => {
@@ -29,12 +60,16 @@ export default function TodoFormPage() {
         let listName = (data['todo-list-name'] as string);
         delete data['todo-list-name'];
 
-        TodoHelper.createList(listName, data);
+        if(list) {
+            TodoHelper.updateList(Number(listId), listName, data);
+        } else {
+            TodoHelper.createList(listName, data);
+        }
 
         navigate('/', {
             state: {
                 flash: {
-                    message: `Todo list ${listName} created`,
+                    message: `Todo list ${listName} ${(list ? 'updated' : 'created')}`,
                     status: 'success'
                 }
             }
@@ -45,7 +80,7 @@ export default function TodoFormPage() {
         <main>
             <form ref={formRef} method="POST" onSubmit={handleSubmitList}>
                 <div className="mb-8 md:w-[100%] lg:w-[40%]">
-                    <Input label="Todo list name" name="todo-list-name" />
+                    <Input label="Todo list name" name="todo-list-name" defaultValue={list?.name ?? ''} />
                 </div>
                 <div id="task-area">
                     <div id="tasks" className="w-[100%]">
@@ -53,12 +88,13 @@ export default function TodoFormPage() {
                             tasks.map((item, i) => (
                                 <div key={item} className="task flex items-center mt-3 gap-1 md:w-[100%] lg:w-[40%]">
                                     <div className="task-status min-w-32">
-                                        <TodoTaskStatusSelect id={`todo-list-task-status-${i}`} name={`todo-list-task[${i}][status]`} />
+                                        <TodoTaskStatusSelect id={`todo-list-task-status-${i}`} name={`todo-list-task[${i}][status]`} defaultSelectedKeys={list?.data[i].status ? [list.data[i].status] : undefined} />
                                     </div>
                                     <div className="task-input self-end flex-1">
                                         <Input
                                             label="Task"
                                             name={`todo-list-task[${i}][task]`}
+                                            defaultValue={list?.data[i].label ?? ''}
                                         />
                                     </div>
                                     {
@@ -92,7 +128,7 @@ export default function TodoFormPage() {
                     radius="sm"
                     className="text-primary bg-secondary/[.05] hover:bg-secondary/[.15] dark:hover:bg-secondary/12 mb-2 mt-2 text-base gap-0"
                 >
-                    Create List
+                    {list ? 'Update' : 'Create'} List
                 </Button>
             </form>
         </main>

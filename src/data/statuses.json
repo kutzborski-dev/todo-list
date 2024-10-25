@@ -1,17 +1,14 @@
 [
     {
         "label": "Complete",
-        "key": "complete",
-        "color": "lime-400"
+        "key": "complete"
     },
     {
         "label": "On hold",
-        "key": "onhold",
-        "color": "slate-500"
+        "key": "onhold"
     },
     {
         "label": "In progress",
-        "key": "inprogress",
-        "color": "orange-400"
+        "key": "inprogress"
     }
 ]

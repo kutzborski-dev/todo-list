@@ -1,11 +1,8 @@
 import { DoneAll as DoneAllIcon } from "@mui/icons-material";
-import colors from 'tailwindcss/colors';
 import TodoListType from "../types/TodoListType";
-import { useThemeContext } from "context/themeContext";
 import { Link, Button } from "@nextui-org/react";
 
 function TodoTab({list}: {list: TodoListType}) {
-    const { theme } = useThemeContext();
     const listItemsCompleteCount = list.data.filter(todo => todo.status === 'complete').length;
 
     return (

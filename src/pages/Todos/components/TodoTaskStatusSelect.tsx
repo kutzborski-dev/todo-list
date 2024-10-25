@@ -1,7 +1,7 @@
 import { Select, SelectItem } from "@nextui-org/react";
 import statuses from "data/statuses.json";
 
-function TodoTaskStatusSelect({id, name = ''}: {id: string, name: string}) {
+function TodoTaskStatusSelect({id, name = '', defaultSelectedKeys = []}: {id: string, name: string, defaultSelectedKeys?: string[]|undefined}) {
     return (
         <Select
             radius="none"
@@ -13,6 +13,7 @@ function TodoTaskStatusSelect({id, name = ''}: {id: string, name: string}) {
                 trigger: "!bg-transparent !shadow-none border-b border-accent",
                 label: "text-lg"
             }}
+            defaultSelectedKeys={defaultSelectedKeys}
           >
             {statuses.map((status, i) => (
               <SelectItem key={status.key} value={status.key}>

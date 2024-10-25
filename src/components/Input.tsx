@@ -7,10 +7,11 @@ type InputProps = {
     label: string;
     name?: string;
     className?: string;
-    classNames?: {} | {[key: string]: string}
+    classNames?: {} | {[key: string]: string},
+    defaultValue?: string
 }
 
-export default function Input({id = '', type = 'text', label, name = '', className = '', classNames = {}}: InputProps) {
+export default function Input({id = '', type = 'text', label, name = '', className = '', classNames = {}, defaultValue = ''}: InputProps) {
     classNames = {
         ...{
             inputWrapper: "!bg-transparent !shadow-none border-b-1 border-accent",
@@ -27,6 +28,7 @@ export default function Input({id = '', type = 'text', label, name = '', classNa
             name={name ?? ''}
             className={className ?? ''}
             classNames={classNames}
+            defaultValue={defaultValue}
         />
     )
 }

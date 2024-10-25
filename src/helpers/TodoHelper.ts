@@ -26,8 +26,37 @@ class TodoHelper {
         return true;
     }
 
+    static updateList(id: number, name: string, data: {[key: string]: FormDataEntryValue|string}) {
+        const tasks: TodoItemType[] = this._formDataToItems(data);
+
+        const list: TodoListType = {
+            id,
+            name,
+            status: tasks.reduce((prev: string, curTask: TodoItemType, i) => {
+                if(prev === 'inprogress') return prev;
+                if(curTask.status !== 'complete') return curTask.status;
+
+                return prev;
+            }, 'complete'),
+            data: tasks
+        }
+
+        let lists: TodoListType[] = this.getLists();
+        lists = lists.map(l => l.id === id ? list : l);
+
+        Cache.set<TodoListType[]>("lists", lists);
+        return true;
+    }
+
     static getLists(): TodoListType[] | [] {
         return Cache.get<TodoListType[]>("lists") ?? [];
+    }
+
+    static getList(listId: number): TodoListType | null {
+        const todoLists = this.getLists();
+        if(!todoLists.length) return null;
+
+        return todoLists.find(todoList => todoList.id === listId) ?? null;
     }
 
     static _formDataToItems(data: {[key: string]: FormDataEntryValue|string}): TodoItemType[] {

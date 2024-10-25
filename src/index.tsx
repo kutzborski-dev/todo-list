@@ -8,8 +8,6 @@ import {
 } from 'react-router-dom';
 import ThemeContextProvider from 'context/themeContext';
 import {NextUIProvider} from "@nextui-org/react";
-import TodoDial from "pages/Todos/components/TodoDial";
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 // Page wrapper
 import { Page } from 'components/index';
@@ -51,10 +49,6 @@ root.render(
       <NextUIProvider>
         <main className="purple">
             <RouterProvider router={router} />
-            <TodoDial
-                ariaLabel="Create new todo list item"
-                icon={<PlaylistAddIcon fontSize="medium" />}
-            />
         </main>
       </NextUIProvider>
     </ThemeContextProvider>

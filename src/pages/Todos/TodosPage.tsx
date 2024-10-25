@@ -3,10 +3,10 @@ import TodoTab from "./components/TodoTab";
 import TodoDial from "./components/TodoDial";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import ErrorMessage from "components/ErrorMessage";
-import { Button } from "@nextui-org/react";
+import TodoHelper from "helpers/TodoHelper";
 
 function TodosPage() {
-    const todoLists: TodoListType[] = [];
+    const todoLists: TodoListType[] = TodoHelper.getLists();
 
     return (
         <main>
@@ -22,16 +22,6 @@ function TodosPage() {
                 :
                     <ErrorMessage message={<>No todo lists found. Why not start by <a href="/list/new">creating a todo list</a>?</>} />
             }
-
-            <Button color="primary">
-                Button
-            </Button>
-
-            <TodoDial
-                href="/list/new"
-                ariaLabel="Create new todo list"
-                icon={<PlaylistAddIcon fontSize="medium" />}
-            />
         </main>
     )
 }

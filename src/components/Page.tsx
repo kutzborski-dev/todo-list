@@ -3,6 +3,8 @@ import { Header } from "./";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import TodoDial from "pages/Todos/components/TodoDial";
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 function BackButton() {
     const navigate = useNavigate();
@@ -22,6 +24,8 @@ function BackButton() {
 }
 
 function Page({children}: {children: ReactNode}) {
+    const location = useLocation();
+    
     return (
         <div id="page-wrapper">
             <Header />
@@ -31,6 +35,15 @@ function Page({children}: {children: ReactNode}) {
                     {children}
                 </div>
             </div>
+            {
+                location.pathname !== '/list/new' ?
+                    <TodoDial
+                        ariaLabel="Create new todo list item"
+                        icon={<PlaylistAddIcon fontSize="medium" />}
+                    />
+                :
+                    null
+            }
         </div>
     );
 }
